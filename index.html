@@ -2,43 +2,54 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Cobby's Casino Picks</title>
+  <title>Gambling PH – Top Offers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       padding: 20px;
-      font-family: sans-serif;
+      font-family: 'Rubik', sans-serif;
       background: #111;
       color: #fff;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .header h2 {
+      margin-bottom: 8px;
     }
 
     .offer {
-      background: #222;
-      border-radius: 12px;
+      background: #1d1d1d;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       padding: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      transition: transform 0.1s ease;
+    }
+
+    .offer:hover {
+      transform: scale(1.01);
     }
 
     .offer img {
-      max-width: 100px;
+      max-width: 120px;
+      margin-bottom: 12px;
       display: block;
-      margin-bottom: 10px;
     }
 
     .offer h3 {
-      margin: 0 0 5px;
-      font-size: 1.2em;
+      margin: 0 0 6px;
+      font-size: 1.25em;
     }
 
     .offer p {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-size: 0.95em;
       color: #ccc;
     }
@@ -46,39 +57,40 @@
     .offer button {
       background: #ffcc00;
       border: none;
-      padding: 10px 16px;
+      padding: 10px 18px;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
+      color: #000;
     }
 
     .offer button:hover {
-      background: #ffdb4d;
+      background: #ffdd33;
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <h2>🎰 Best Bonuses by Cobby</h2>
+    <h2>🎰 Best Casino Bonuses</h2>
     <p>Tap to claim your exclusive offers!</p>
   </div>
 
   <div class="offer">
-    <img src="https://gambling.ph/img/brands/bk8.png" alt="BK8">
+    <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-20-110x56.png" alt="BK8">
     <h3>BK8 Casino</h3>
     <p>🎁 1% Unlimited Daily Cash</p>
     <button onclick="tg.openLink('https://gambling.ph/go/BK8')">Sign Up</button>
   </div>
 
   <div class="offer">
-    <img src="https://gambling.ph/img/brands/bet88.png" alt="Bet88">
+    <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-25-110x56.png" alt="Bet88">
     <h3>Bet88 Casino</h3>
     <p>🎁 Risk-Free bet up to 2,888 PHP</p>
     <button onclick="tg.openLink('https://gambling.ph/go/Bet88')">Sign Up</button>
   </div>
 
   <div class="offer">
-    <img src="https://gambling.ph/img/brands/winzir.png" alt="WinZir">
+    <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-23-110x56.png" alt="WinZir">
     <h3>WinZir</h3>
     <p>🎁 300,000 PHP Prize Pool</p>
     <button onclick="tg.openLink('https://gambling.ph/go/Winzir')">Sign Up</button>
