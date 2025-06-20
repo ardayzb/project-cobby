@@ -44,16 +44,16 @@
         const user = tg.initDataUnsafe?.user;
         if (user) {
           log("User detected: " + JSON.stringify(user));
-          fetch('https://script.google.com/macros/s/AKfycbyEeFcRRSvulOpd5azFlbL7vL8tBjvU2Q-VvPY1xw1ftp-FIZkeg3-_ZpRui6U4F5M-aA/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: user.id,
-              name: `${user.first_name} ${user.last_name || ''}`,
-              username: user.username,
-            }),
-          })
+          fetch('https://c039df0e-51ad-4e62-b584-57fc8f177b74-00-cmzqz4krvlfg.kirk.replit.dev/log', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    id: user.id,
+    name: `${user.first_name} ${user.last_name || ''}`,
+    username: user.username,
+  }),
+});
+
           .then(() => log("Request sent successfully (no-cors, no response)"))
           .catch(err => log("Fetch error: " + err.message));
         } else {
