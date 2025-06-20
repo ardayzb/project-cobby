@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Cobby's Top Offers</title>
+  <title>Cobby's Casino Picks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
@@ -59,11 +59,30 @@
 </head>
 <body>
   <div class="header">
-    <h2>🎰 Best Casino Bonuses</h2>
+    <h2>🎰 Best Bonuses by Cobby</h2>
     <p>Tap to claim your exclusive offers!</p>
   </div>
 
-  <div id="offers"></div>
+  <div class="offer">
+    <img src="https://gambling.ph/img/brands/bk8.png" alt="BK8">
+    <h3>BK8 Casino</h3>
+    <p>🎁 1% Unlimited Daily Cash</p>
+    <button onclick="tg.openLink('https://gambling.ph/go/BK8')">Sign Up</button>
+  </div>
+
+  <div class="offer">
+    <img src="https://gambling.ph/img/brands/bet88.png" alt="Bet88">
+    <h3>Bet88 Casino</h3>
+    <p>🎁 Risk-Free bet up to 2,888 PHP</p>
+    <button onclick="tg.openLink('https://gambling.ph/go/Bet88')">Sign Up</button>
+  </div>
+
+  <div class="offer">
+    <img src="https://gambling.ph/img/brands/winzir.png" alt="WinZir">
+    <h3>WinZir</h3>
+    <p>🎁 300,000 PHP Prize Pool</p>
+    <button onclick="tg.openLink('https://gambling.ph/go/Winzir')">Sign Up</button>
+  </div>
 
   <script>
     const tg = window.Telegram.WebApp;
@@ -81,38 +100,6 @@
         }),
       });
     }
-
-    fetch("https://script.google.com/macros/s/AKfycbwGAqVUNFl7A9KIKMqwt06rE7cyIUApGq-cmRMx5wE8_M4QdLGE7SkPT4A-wgHwpLkaTw/exec")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("offers");
-        data.forEach(offer => {
-          const el = document.createElement("div");
-          el.className = "offer";
-
-          if (offer.logo) {
-            const img = document.createElement("img");
-            img.src = offer.logo;
-            img.alt = offer.name;
-            el.appendChild(img);
-          }
-
-          const title = document.createElement("h3");
-          title.textContent = offer.name;
-          el.appendChild(title);
-
-          const desc = document.createElement("p");
-          desc.textContent = "🎁 " + offer.bonus;
-          el.appendChild(desc);
-
-          const btn = document.createElement("button");
-          btn.textContent = "Sign Up";
-          btn.onclick = () => tg.openLink(offer.url);
-          el.appendChild(btn);
-
-          container.appendChild(el);
-        });
-      });
   </script>
 </body>
 </html>
