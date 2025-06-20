@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gambling PH Mini App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="https://gambling.ph"></iframe>
+    <script>
+      const tg = window.Telegram.WebApp;
+      tg.expand(); // maximize webview
+
+      // OPTIONAL: capture user info
+      const initDataUnsafe = tg.initDataUnsafe;
+      const user = initDataUnsafe?.user;
+      if (user) {
+        fetch('https://your-google-apps-script-or-webhook-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: user.id,
+            name: `${user.first_name} ${user.last_name || ''}`,
+            username: user.username,
+          }),
+        });
+      }
+    </script>
+  </body>
+</html>
