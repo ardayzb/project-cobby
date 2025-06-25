@@ -9,55 +9,18 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 20px;
       font-family: 'Rubik', sans-serif;
       background: #111;
       color: #fff;
-    }
-
-    .topbar {
-      background: linear-gradient(to right, #222, #333);
-      display: flex;
-      align-items: center;
-      padding: 12px 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-
-    .topbar img {
-      height: 32px;
-      margin-right: 10px;
-    }
-
-    .topbar h1 {
-      font-size: 1.2em;
-      margin: 0;
-    }
-
-    .main-content {
-      padding: 20px 16px 40px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .header h2 {
-      margin: 0 0 10px;
-      font-size: 1.6em;
-    }
-
-    .header p {
-      font-size: 1em;
-      color: #ccc;
     }
 
     .offer {
       background: #1d1d1d;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      margin-bottom: 24px;
+      padding: 16px;
+      margin-bottom: 20px;
       transition: transform 0.1s ease;
     }
 
@@ -66,30 +29,29 @@
     }
 
     .offer img {
-      max-width: 130px;
-      margin-bottom: 14px;
+      max-width: 120px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .offer h3 {
-      margin: 0 0 8px;
-      font-size: 1.35em;
+      margin: 0 0 6px;
+      font-size: 1.25em;
     }
 
     .offer p {
-      margin: 0 0 14px;
-      font-size: 1em;
-      color: #bbb;
+      margin: 0 0 12px;
+      font-size: 0.95em;
+      color: #ccc;
     }
 
     .offer button {
       background: #ffcc00;
       border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 10px 18px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 1em;
       color: #000;
     }
 
@@ -99,38 +61,7 @@
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Casino_Icon.png/32px-Casino_Icon.png" alt="Logo">
-    <h1>Gambling PH</h1>
-  </div>
-
-  <div class="main-content">
-    <div class="header">
-      <h2>🎰 Best Casino Bonuses</h2>
-      <p>Tap to claim your exclusive offers!</p>
-    </div>
-
-    <div class="offer">
-      <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-20-110x56.png" alt="BK8">
-      <h3>BK8 Casino</h3>
-      <p>🎁 1% Unlimited Daily Cash</p>
-      <button onclick="tg.openLink('https://gambling.ph/go/BK8')">Sign Up</button>
-    </div>
-
-    <div class="offer">
-      <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-25-110x56.png" alt="Bet88">
-      <h3>Bet88 Casino</h3>
-      <p>🎁 Risk-Free bet up to 2,888 PHP</p>
-      <button onclick="tg.openLink('https://gambling.ph/go/Bet88')">Sign Up</button>
-    </div>
-
-    <div class="offer">
-      <img src="https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-23-110x56.png" alt="WinZir">
-      <h3>WinZir</h3>
-      <p>🎁 300,000 PHP Prize Pool</p>
-      <button onclick="tg.openLink('https://gambling.ph/go/Winzir')">Sign Up</button>
-    </div>
-  </div>
+  <div id="offers" class="main-content"></div>
 
   <script>
     const tg = window.Telegram.WebApp;
@@ -148,6 +79,41 @@
         }),
       });
     }
+
+    const offers = [
+      {
+        name: "BK8 Casino",
+        description: "🎁 1% Unlimited Daily Cash",
+        link: "https://gambling.ph/go/BK8",
+        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-20-110x56.png"
+      },
+      {
+        name: "Bet88 Casino",
+        description: "🎁 Risk-Free bet up to 2,888 PHP",
+        link: "https://gambling.ph/go/Bet88",
+        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-25-110x56.png"
+      },
+      {
+        name: "WinZir",
+        description: "🎁 300,000 PHP Prize Pool",
+        link: "https://gambling.ph/go/Winzir",
+        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-23-110x56.png"
+      }
+    ];
+
+    const container = document.getElementById("offers");
+
+    offers.forEach(offer => {
+      const div = document.createElement("div");
+      div.className = "offer";
+      div.innerHTML = `
+        <img src="${offer.logo}" alt="${offer.name}">
+        <h3>${offer.name}</h3>
+        <p>${offer.description}</p>
+        <button onclick="tg.openLink('${offer.link}')">Sign Up</button>
+      `;
+      container.appendChild(div);
+    });
   </script>
 </body>
 </html>
