@@ -15,6 +15,15 @@
       color: #fff;
     }
 
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .header h2 {
+      margin-bottom: 8px;
+    }
+
     .offer {
       background: #1d1d1d;
       border-radius: 16px;
@@ -61,12 +70,20 @@
   </style>
 </head>
 <body>
-  <div id="offers" class="main-content"></div>
+  <!-- 🎰 Static Header -->
+  <div class="header">
+    <h2>🎰 Best Casino Bonuses</h2>
+    <p>Tap to claim your exclusive offers!</p>
+  </div>
+
+  <!-- 📦 Container where offers will be dynamically added -->
+  <div id="offers-container"></div>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
 
+    // 📤 Send user data to Vercel backend
     const user = tg.initDataUnsafe?.user;
     if (user) {
       fetch('https://cobby-vercel-backend.vercel.app/api/log', {
@@ -80,37 +97,38 @@
       });
     }
 
+    // 📊 Array of offers (easy to edit or expand)
     const offers = [
       {
         name: "BK8 Casino",
-        description: "🎁 1% Unlimited Daily Cash",
-        link: "https://gambling.ph/go/BK8",
-        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-20-110x56.png"
+        bonus: "🎁 1% Unlimited Daily Cash",
+        url: "https://gambling.ph/go/BK8",
+        image: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-20-110x56.png"
       },
       {
         name: "Bet88 Casino",
-        description: "🎁 Risk-Free bet up to 2,888 PHP",
-        link: "https://gambling.ph/go/Bet88",
-        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-25-110x56.png"
+        bonus: "🎁 Risk-Free bet up to 2,888 PHP",
+        url: "https://gambling.ph/go/Bet88",
+        image: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-25-110x56.png"
       },
       {
         name: "WinZir",
-        description: "🎁 300,000 PHP Prize Pool",
-        link: "https://gambling.ph/go/Winzir",
-        logo: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-23-110x56.png"
+        bonus: "🎁 300,000 PHP Prize Pool",
+        url: "https://gambling.ph/go/Winzir",
+        image: "https://gambling.ph/wp-content/uploads/2025/05/CassinoX-review-logos-530x270-23-110x56.png"
       }
     ];
 
-    const container = document.getElementById("offers");
-
+    // 🧱 Render each offer dynamically
+    const container = document.getElementById("offers-container");
     offers.forEach(offer => {
       const div = document.createElement("div");
       div.className = "offer";
       div.innerHTML = `
-        <img src="${offer.logo}" alt="${offer.name}">
+        <img src="${offer.image}" alt="${offer.name}">
         <h3>${offer.name}</h3>
-        <p>${offer.description}</p>
-        <button onclick="tg.openLink('${offer.link}')">Sign Up</button>
+        <p>${offer.bonus}</p>
+        <button onclick="tg.openLink('${offer.url}')">Sign Up</button>
       `;
       container.appendChild(div);
     });
